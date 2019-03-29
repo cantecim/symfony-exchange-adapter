@@ -199,6 +199,8 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/macos,windows,symfony,jetbrains+all
 
+# docker-composer service data files
+/data/
 
 ###> symfony/framework-bundle ###
 /.env.local
