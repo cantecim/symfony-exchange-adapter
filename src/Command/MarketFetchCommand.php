@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Exchange\Fetcher;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -13,6 +14,14 @@ class MarketFetchCommand extends Command
 {
     protected static $defaultName = 'market:fetch';
 
+    protected $fetcher;
+
+    public function __construct($name = null, Fetcher $fetcher)
+    {
+        parent::__construct($name);
+        $this->fetcher = $fetcher;
+    }
+
     protected function configure()
     {
         $this
@@ -21,6 +30,7 @@ class MarketFetchCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->fetcher->fetch();
 //        $io = new SymfonyStyle($input, $output);
 //        $arg1 = $input->getArgument('arg1');
 //
