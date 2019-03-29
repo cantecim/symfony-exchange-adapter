@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 
+use App\Entity\Rate;
+use App\Repository\RateRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class HomeController
+class HomeController extends AbstractController
 {
 
     /**
@@ -13,9 +16,11 @@ class HomeController
      */
     public function index()
     {
-        return new Response(
-            '<html><body>Home</body></html>'
-        );
+        $rateRepository = $this->getDoctrine()->getRepository(Rate::class);
+        $rates = $rateRepository->findToday();
+        return $this->render('home.html.twig', [
+            'rates' => $rates
+        ]);
     }
 
 }

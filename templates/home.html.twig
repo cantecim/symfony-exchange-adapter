@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <table class="pure-table">
+        <thead>
+        <tr>
+            <th>Market</th>
+            <th>Symbol</th>
+            <th>Price</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for rate in rates %}
+            <tr>
+                <td>{{ rate.MarketName }}</td>
+                <td>{{ rate.Symbol }}</td>
+                <td>{{ rate.Rate }}</td>
+                <td>{{ rate.PublishedDate|date('Y-m-d') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
